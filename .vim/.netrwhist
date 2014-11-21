@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/ayeganov/gnuCode/Software/GnuBioApi/Test'
+let g:netrw_dirhist_2='/home/ayeganov/gitworkspaces/Software/.git/modules/arduino_hw_utils'
+let g:netrw_dirhist_3='/home/ayeganov/gnuCode/Software/GnuBioApi/hostPysideGui'
+let g:netrw_dirhist_4='/home/ayeganov/gnuCode/Software/cmake-modules'
+let g:netrw_dirhist_5='/home/ayeganov/gnuCode/Software/GnuBioApi/libs/megaview/highcharts'
