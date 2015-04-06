@@ -35,10 +35,19 @@ python del powerline_setup
 "NerdTree config options
 map <C-n> :NERDTreeToggle<CR>
 
+" Special character display
+:set listchars=eol:»,tab:>-,trail:~,extends:>,precedes:<
+:set list
+
 "Useful mappings
+" Show/hide line numbers
 :nmap \l :setlocal number!<CR>
+" Enable/disable paste mode (no auto tabs)
 :nmap \o :set paste!<CR>
+" Show/hide special characters(tabs, newlines, spaces etc)
 :nmap \c :set list!<CR>
+" Turn all buffers into tabs
+:nmap \t :tab sball<CR>
 
 " Whitespace highlighting
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen ctermfg=black guifg=black
@@ -52,9 +61,6 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 autocmd FileType make set noexpandtab
 
-" Special character display
-:set listchars=eol:»,tab:>-,trail:~,extends:>,precedes:<
-:set list
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
