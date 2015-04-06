@@ -85,6 +85,18 @@ function sources
     find . -name "*.cpp" -o -name "*.py" -o -name "*.hpp" -o -name "*.c" -o -name "*.h"
 }
 
+function grep_code
+{
+    local search_param=$1;
+    sources | xargs grep -n "$search_param" 2> /dev/null
+}
+
+function virtenv
+{
+    source ${1}/bin/activate 2> /dev/null || echo "No virtual environment available."
+}
+
+
 # Preferred editor for local and remote sessions
 #if [[ -n $SSH_CONNECTION ]]; then
 #  export EDITOR='vim'
@@ -106,3 +118,6 @@ function sources
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Haskell stuff
+export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH
