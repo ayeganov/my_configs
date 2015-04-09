@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Exit if any error occurs
+set -e
+
+echo "Installing vim..."
+sudo apt-get install vim > /dev null
+echo "Done"
+
+echo "Installing tig first..."
+sudo apt-get install tig > /dev/null
+echo "Done"
+
+echo "Installing zsh..."
+sudo apt-get install zsh > /dev/null
+wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh > /dev/null
+sudo chsh -s "$(command -v zsh)" "${USER}"
+echo "Done"
+
+echo "Installing powerline status plugin for vim..."
+sudo pip install powerline-status
+echo "Done"
+
+echo "Setting up fonts for powerline plugin for vim..."
+mkdir ~/.fonts
+mkdir -p ~/.config/fontconfig/conf.d/
+cp 10-powerline-symbols.conf ~/.config/fontconfig/conf.d
+cp PowerlineSymbols.otf ~/.fonts
+echo "Done"
+
+echo "Installing Jedi library for parsing python code..."
+sudo pip install jedi
+echo "Done"
+
+echo "Lets get pyenv working..."
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv > /dev/null
+echo "Done"
+
+echo "Copy over the run command files..."
+cp zshrc ~/.zshrc
+cp vimrc ~/.vimrc
+cp -r vim ~/.vim
+cp aleks.zsh-theme ~/.oh-my-zsh/themes
+echo "Done"
+
+echo "Please close this terminal, and open a new one."
