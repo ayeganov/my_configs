@@ -4,7 +4,7 @@
 set -e
 
 echo "Installing vim..."
-sudo apt-get install vim > /dev null
+sudo apt-get install vim > /dev/null
 echo "Done"
 
 echo "Installing tig first..."
@@ -22,8 +22,12 @@ sudo pip install powerline-status
 echo "Done"
 
 echo "Setting up fonts for powerline plugin for vim..."
-mkdir ~/.fonts
-mkdir -p ~/.config/fontconfig/conf.d/
+if [ ! -d ~/.fonts ];then
+    mkdir ~/.fonts
+fi
+if [ ! -d ~/.config/fontconfig/conf.d ];then
+    mkdir -p ~/.config/fontconfig/conf.d/
+fi
 cp 10-powerline-symbols.conf ~/.config/fontconfig/conf.d
 cp PowerlineSymbols.otf ~/.fonts
 echo "Done"
