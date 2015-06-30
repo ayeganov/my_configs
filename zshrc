@@ -121,3 +121,6 @@ function virtenv
 
 # Haskell stuff
 export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH
+
+# Change default format of built-in time
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
