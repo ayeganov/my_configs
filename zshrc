@@ -49,7 +49,7 @@ plugins=(git svn zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/lib/ccache:/home/${USER}/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin"
+export PATH="/home/${USER}/.pyenv/bin:/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -82,10 +82,10 @@ CDPATH=".:~:~/code"
 
 function sources
 {
-    find . -name "*.cpp" -o -name "*.py" -o -name "*.hpp" -o -name "*.c" -o -name "*.h"
+    find . -name "*.cpp" -o -name "*.py" -o -name "*.hpp" -o -name "*.c" -o -name "*.h" -o -name "*.html" -o -name "*.js" -o -name "*.css"
 }
 
-function grep_code
+function grepcode
 {
     local search_param=$1;
     sources | xargs grep -n "$search_param" 2> /dev/null
@@ -96,6 +96,9 @@ function virtenv
     source ${1}/bin/activate 2> /dev/null || echo "No virtual environment available."
 }
 
+
+# Disable the most annoying feature of ZSH
+unsetopt share_history
 
 # Preferred editor for local and remote sessions
 #if [[ -n $SSH_CONNECTION ]]; then
@@ -121,6 +124,10 @@ function virtenv
 
 # Haskell stuff
 export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Change default format of built-in time
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
