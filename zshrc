@@ -49,7 +49,7 @@ plugins=(git svn zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/lib/ccache:/home/aleks/code/software/build/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin"
+export PATH="/usr/lib/ccache:/home/${USER}/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

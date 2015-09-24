@@ -3,6 +3,14 @@
 # Exit if any error occurs
 set -e
 
+set_zsh_as_default()
+{
+    local user_line=$(grep ${USER} /etc/passwd);
+    local shell_name=$(echo ${user_line} | awk -F: '{print $NF}');
+    local escaped_shell_name=$(printf '%s\n' ${shell_name} | sed 's/[/]/\\&/g');
+    local new_shell="\/bin\/zsh";
+}
+
 echo "Finishing up the config repo install..."
 git submodule init
 git submodule update
@@ -60,6 +68,8 @@ cp zshrc ~/.zshrc
 cp vimrc ~/.vimrc
 cp -r vim ~/.vim
 cp aleks.zsh-theme ~/.oh-my-zsh/themes
+# update pyenv
+~/.pyenv/bin/pyenv update
 echo "Done"
 
 echo "Please close this terminal, and open a new one."
