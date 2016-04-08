@@ -1,5 +1,7 @@
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
+" To get the full range of colors in the terminal window
+set t_Co=256
 
 augroup filetype
   au! BufRead,BufNewFile *.proto setfiletype proto
@@ -27,13 +29,7 @@ set shiftwidth=4
 " Powerline config options
 set nocompatible
 set encoding=utf-8
-let g:Powerline_symbols='fancy'
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
-"NerdTree config options
-map <C-n> :NERDTreeToggle<CR>
 
 " Special character display
 :set listchars=eol:»,tab:>-,trail:~,extends:>,precedes:<
@@ -53,46 +49,38 @@ map <C-n> :NERDTreeToggle<CR>
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen ctermfg=black guifg=black
 highlight AllTabs ctermbg=darkred guibg=darkred
 
-" The matchadd script below should work, but fails for whatever reason
-"au InsertEnter * let w:m1=matchadd('ExtraWhitespace', '/\s\+\%#\@<!$/')
-":let m = matchadd('AllTabs', '/\t/')
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 autocmd FileType make set noexpandtab
-
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let g:ctrlp_user_command =
-     \ ['.git', "cd %s && git ls-files . -co --exclude-standard && git submodule foreach -q \"git ls-files | sed 's|^|$path/|g'\""]
 
 " map ctrl-b to list currently open buffers
 "nmap <C-b> :buffers<CR>:buffer<Space>
 
-" Pathogen initialization
-execute pathogen#infect()
-execute pathogen#helptags()
 filetype on
-"filetype plugin indent off
-
-" Show trailing whitespace:
-":match ExtraWhitespace /\s\+\%#\@<!$/
-":2match AllTabs /\t/
 
 set tabstop=4
 set hlsearch
 set expandtab
 
 
-"###############Syntastic checker####################
-let g:syntastic_cpp_compiler_options = '-std=c++0x'
-"####################################################
-"
-"########################## VIM JEDI SETUP ###################
-"let g:jedi#auto_initialization = 1
-"let g:jedi#use_tabs_not_buffers = 1
-"#############################################################
+"################ PLUGINS #########################
+call plug#begin('~/.vim/plugged')
+" Make sure you use single quotes
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
 
+" Ctrl-P config
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command =
+     \ ['.git', "cd %s && git ls-files . -co --exclude-standard && git submodule foreach -q \"git ls-files | sed 's|^|$path/|g'\""]
 
+" Airline config
+let g:airline_powerline_fonts = 1
+
+" NerdTree config options
+map <C-n> :NERDTreeToggle<CR>

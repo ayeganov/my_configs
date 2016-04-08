@@ -99,6 +99,7 @@ function virtenv
 
 # Disable the most annoying feature of ZSH
 unsetopt share_history
+unsetopt auto_cd
 
 # Preferred editor for local and remote sessions
 #if [[ -n $SSH_CONNECTION ]]; then
