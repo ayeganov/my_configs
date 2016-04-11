@@ -1,6 +1,6 @@
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
-" To get the full range of colors in the terminal window
+" To get the full range of colors in the terminal window, vim only
 set t_Co=256
 
 augroup filetype
@@ -28,7 +28,7 @@ set shiftwidth=4
 
 " Powerline config options
 set nocompatible
-set encoding=utf-8
+" set encoding=utf-8   "vim only
 
 
 " Special character display
@@ -71,6 +71,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/syntastic'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 call plug#end()
 
 " Ctrl-P config
